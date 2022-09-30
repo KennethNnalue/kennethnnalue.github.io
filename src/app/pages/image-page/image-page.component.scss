@@ -1,0 +1,74 @@
+.appContainer {
+  margin: 0 auto;
+  width: 80vw;
+  height: 100vh;
+  // background-image: linear-gradient(to right bottom, #fdfbfb, #d3d9dd);
+  background-color: #fdfbfb;
+}
+.image-top-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+}
+
+.image-owner {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  &__picture {
+    width: 4rem;
+    height: 4rem;
+  }
+  &__img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+  &__name {
+    letter-spacing: 0.1rem;
+    word-spacing: 0.5rem;
+  }
+  &__links {
+    display: flex;
+    justify-content: flex-start;
+    gap: 2rem;
+    color: rgb(138, 136, 136);
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover {
+      color: rgb(163, 159, 159);
+    }
+  }
+}
+
+.image-top__actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  &--item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 0 0.8rem;
+    border: 0.12rem solid rgb(176, 175, 175);
+    border-radius: 0.3rem;
+    cursor: pointer;
+    color: rgb(146, 143, 143);
+    font-size: 1rem;
+  }
+}
+
+.image {
+  max-width: 100%;
+  height: 50rem;
+  //padding: 1rem;
+  margin: auto;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
