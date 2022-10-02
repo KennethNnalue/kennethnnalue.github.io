@@ -10,6 +10,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ImageItemComponent } from './components/image-item/image-item.component';
 import { ImageListComponent } from './components/image-list/image-list.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ImageDetailsModalComponent } from './modals/image-details-modal/image-details-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
 
 const appRoute: Routes = [
   { path: '', component: HomePageComponent },
@@ -27,13 +32,18 @@ const appRoute: Routes = [
     ImagePageComponent,
 
     ImageItemComponent,
-     ImageListComponent,
+    ImageListComponent,
+    ImageDetailsModalComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoute),
+    HttpClientModule,
     AppRoutingModule,
     MatIconModule,
+    MatDialogModule,
+    MatButtonModule,
+    FormsModule,
     BrowserAnimationsModule,
   ],
   providers: [],

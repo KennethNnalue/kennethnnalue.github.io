@@ -1,13 +1,69 @@
-<div class="container">
+<div class="featured">
+  <h3 class="heading-3 featured__heading-3">Featured Photos</h3>
   <div class="gallery">
     <div
-      *ngFor="let image of images"
-      [style.gridRow]="image.row"
-      [style.gridCol]="image.col"
+      *ngFor="let image of imageList"
       class="image"
+      (click)="openImageDetails(image)"
     >
-      <img [src]="image.url" alt="image description" />
-      <span> + </span>
+      <img
+        [src]="image.url.full"
+        [alt]="image.description ? image.description : 'image item'"
+      />
+      <span
+        class="image--like"
+        (click)="likePhoto()"
+        [ngStyle]="{ color: photoLiked ? '#e64980' : '#868e96' }"
+      >
+        <mat-icon aria-hidden="false" aria-label="License icon"
+          >favorite</mat-icon
+        >
+      </span>
+      <div class="image--owner">
+        <div class="image--owner__picture">
+          <img
+            class="image--owner__img"
+            [src]="image.createdBy.profile_image"
+            [alt]="image.createdBy.first_name"
+          />
+        </div>
+        <div class="image--owner__name">
+          {{ image.createdBy.last_name }} {{ image.createdBy.first_name }}
+        </div>
+      </div>
+      <span class="image--download">
+        <mat-icon aria-hidden="false" aria-label="download icon"
+          >download</mat-icon
+        >
+      </span>
     </div>
+
+    <!-- <app-image-item
+      class="gallery__item"
+      *ngFor="let image of imageList; index as i"
+      [ngClass]="getClass(i)"
+      [imageUrl]="image.urls.regular"
+      [imageDescription]="
+        image.description ? image.description : 'no description'
+      "
+      [ownerFirstName]="
+        image.user.first_name ? image.user.first_name : 'image user'
+      "
+      [ownerLastName]="
+        image.user.last_name ? image.user.last_name : 'image user'
+      "
+      [ownerPictureUrl]="
+        image.user.profile_image.medium ? image.user.profile_image.medium : ''
+      "
+      [imagee]="image"
+    >
+    </app-image-item> -->
   </div>
 </div>
+
+<!-- <section class="featured">
+  <h3 class="heading-3 featured__heading-3">Featured Photos</h3>
+  <div class="featured__items">
+    <figure class="featured__images-1">
+      <img src="img/photo-1.jpg" alt="photo-1" class="featured__img">
+    </figure> -->

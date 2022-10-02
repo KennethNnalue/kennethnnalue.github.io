@@ -1,0 +1,105 @@
+<div class="appContainer">
+  <div class="image-container">
+    <div class="image-top-details">
+      <div class="image-owner">
+        <div class="image-owner__picture">
+          <img
+            class="image-owner__img"
+            alt="user image"
+            [src]="image.createdBy.profile_image"
+          />
+        </div>
+        <div class="image-owner-details">
+          <div class="image-owner__name">
+            {{
+              image.createdBy.first_name
+                ? image.createdBy.first_name
+                : "not available"
+            }}
+            {{
+              image.createdBy.last_name
+                ? image.createdBy.last_name
+                : "not available"
+            }}
+          </div>
+          <div class="image-owner__links">
+            <span>Follow</span>
+            <span>Donate</span>
+          </div>
+        </div>
+        <button mat-raised-button mat-dialog-close>Close</button>
+      </div>
+    </div>
+    <div class="image" [ngClass]="{ landScape: image.width > image.height }">
+      <img [alt]="image.description" [src]="image.url.full" />
+    </div>
+  </div>
+  <div class="details">
+    <div class="details-item details__views">
+      <span class="details__title">Total Photos</span>
+      <span class="details__description">
+        {{
+          image.createdBy.total_photos
+            ? image.createdBy.total_photos
+            : "not available"
+        }}
+      </span>
+    </div>
+    <div class="details-item details__downloads">
+      <span class="details__title">Likes</span>
+      <span class="details__description">{{
+        image.likes ? image.likes : "not available"
+      }}</span>
+    </div>
+    <div class="details-item details__description">
+      <span class="details__title">Description</span>
+      <span class="details__description">{{
+        image.description ? image.description : "no description"
+      }}</span>
+    </div>
+
+    <span class="details--download">
+      <mat-icon aria-hidden="false" aria-label="share icon">download</mat-icon>
+      <p>Download</p></span
+    >
+  </div>
+
+  <div class="image--info">
+    <div class="image--info__items">
+      <span class="image--info__item">
+        <mat-icon aria-hidden="false" aria-label="location icon"
+          >location_on</mat-icon
+        >
+        <p>
+          {{
+            image.createdBy.location
+              ? image.createdBy.location
+              : "not available"
+          }}
+        </p></span
+      >
+      <span class="image--info__item">
+        <mat-icon aria-hidden="false" aria-label="published date icon"
+          >event</mat-icon
+        >
+        <p>
+          {{ image.created_at ? (image.created_at | date) : "not available" }}
+        </p></span
+      >
+    </div>
+    <div class="image--info__items">
+      <span class="image--info__item">
+        <mat-icon aria-hidden="false" aria-label="camera icon"
+          >photo_camera</mat-icon
+        >
+        <p>DJI, FC7203</p></span
+      >
+      <span class="image--info__item">
+        <mat-icon aria-hidden="false" aria-label="License icon"
+          >verified_user</mat-icon
+        >
+        <p>Free to use under the Unsplash License</p></span
+      >
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container" (click)="openImageDetails()">
   <div class="image">
-    <img [src]="image?.url" alt="image description" />
+    <img [src]="imageUrl" [alt]="imageDescription" />
     <mat-icon class="image--like" aria-hidden="false" aria-label="License icon"
       >favorite</mat-icon
     >
@@ -8,11 +8,13 @@
       <div class="image--owner__picture">
         <img
           class="image--owner__img"
-          src="assets/images/image3.jpg"
-          alt="photographer's profile picture"
+          [src]="ownerPictureUrl"
+          [alt]="ownerFirstName"
         />
       </div>
-      <div class="image--owner__name">Oluyomi Akindele</div>
+      <div class="image--owner__name">
+        {{ ownerLastName }} {{ ownerFirstName }}
+      </div>
     </div>
     <mat-icon
       class="image--download"

@@ -1,6 +1,138 @@
+@import "../../../styles.scss";
 .container {
+  width: 100%;
+  margin: 0 auto;
+}
+.header {
+  display: flex;
+  height: 50vh;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2rem;
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("https://images.unsplash.com/photo-1559827291-72ee739d0d9a?ixid=MnwzNjcxODV8MHwxfHNlYXJjaHwxNnx8bGFuZHNjYXBlfGVufDB8fHx8MTY2NDY3MzM1MA&ixlib=rb-1.2.1");
+  background-position: center;
+  background-size: cover;
+
+  &__navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    & h2 {
+      color: $color-white;
+      font-weight: 800;
+      font-size: 2rem;
+    }
+  }
+
+  &__hero {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // &__nav {}
+
+  &__link {
+    text-decoration: none;
+    color: #000;
+    font-size: 2rem;
+
+    &:link,
+    &:visited {
+      background-color: $color-grey-light-1;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      transition: all 0.2s;
+    }
+
+    &:hover,
+    &:active {
+      background-color: $color-grey-light-2;
+    }
+  }
+
+  // &__hero {}
+  &__heading-1 {
+    display: block;
+    font-size: 3.5rem;
+    text-align: center;
+    color: $color-grey-light-1;
+    //margin-top: 7rem;
+  }
+
+  &__trends {
+    display: flex;
+    gap: 2rem;
+    color: $color-grey-light-2;
+    font-weight: 400;
+    margin: 0 auto;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    * {
+      cursor: pointer;
+      transition: all 0.3s;
+      &:hover {
+        color: $color-white;
+      }
+      &:first-child {
+        color: $color-grey-dark-1;
+        font-size: 1.6rem;
+        &:hover {
+          color: $color-grey-light-1;
+        }
+      }
+    }
+  }
+}
+
+.logo {
   display: flex;
   justify-content: space-between;
-  width: 60%;
-  margin: 0 auto;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 5rem;
+
+  &__icon {
+    background-color: $color-grey-light-1;
+    border-radius: 0.4rem;
+    padding: 1rem;
+  }
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__input {
+    background-color: $color-grey-light-1;
+    padding: 0.7rem 2rem;
+    border-radius: 0.5rem;
+    width: 70rem;
+    height: 5rem;
+    font-size: 2rem;
+    outline: none;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: $color-white;
+    }
+  }
+
+  &__icon {
+    width: 2rem;
+    height: 2rem;
+    margin-left: -4rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: $color-grey-dark-2;
+    &:hover {
+      color: $color-grey-dark-1;
+    }
+  }
 }

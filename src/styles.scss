@@ -2,6 +2,9 @@
 $color-white: #ffff;
 $color-grey-light-1: #f5f0f0;
 $color-grey-light-2: #d6d0d0;
+$color-grey-dark-1: #868e96;
+$color-grey-dark-2: #495057;
+$color-grey-dark-3: #343a40;
 
 $bp-largest: 75em; ///1200px
 $bp-large: 62.5em; ///1000px
@@ -13,7 +16,7 @@ $bp-small: 37.5em; ///600px
 *::after {
   padding: 0;
   margin: 0;
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 body {
@@ -23,7 +26,7 @@ body {
   font-weight: 400;
   line-height: 1.6;
   color: #495057;
-  background-image: linear-gradient(to right bottom, #e7eff1, #d9e7eb);
+  //background-image: linear-gradient(to right bottom, #e7eff1, #d9e7eb);
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;

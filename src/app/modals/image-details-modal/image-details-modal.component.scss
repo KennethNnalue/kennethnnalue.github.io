@@ -1,0 +1,126 @@
+.appContainer {
+  margin: 0;
+  //width: 80vw;
+  //height: 100%;
+  // background-image: linear-gradient(to right bottom, #fdfbfb, #d3d9dd);
+  //background-color: #fdfbfb;
+}
+.image-top-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+}
+
+.image-owner {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  position: relative;
+
+  & > button {
+    position: fixed;
+    top: 7rem;
+    right: 12%;
+  }
+  &__picture {
+    width: 4rem;
+    height: 4rem;
+  }
+  &__img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+  &__name {
+    letter-spacing: 0.1rem;
+    word-spacing: 0.5rem;
+  }
+  &__links {
+    display: flex;
+    justify-content: flex-start;
+    gap: 2rem;
+    color: rgb(138, 136, 136);
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover {
+      color: rgb(163, 159, 159);
+    }
+  }
+}
+
+.image {
+  width: 50%;
+  height: 60rem;
+  //padding: 1rem;
+  margin: 0 auto;
+}
+
+.landScape {
+  width: 80%;
+  height: 50rem;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  margin: 0;
+}
+
+.details {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 1.5rem 4rem;
+  display: flex;
+  justify-content: space-between;
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+  }
+  &__title {
+    color: rgb(146, 143, 143);
+  }
+
+  &__description {
+    color: rgb(36, 35, 35);
+    font-weight: 500;
+  }
+
+  &--download {
+    display: flex;
+    align-items: center;
+
+    gap: 1.5rem;
+    color: rgb(146, 143, 143);
+    padding: 0 1rem;
+    border: 0.12rem solid rgb(176, 175, 175);
+
+    border-radius: 0.3rem;
+    cursor: pointer;
+  }
+  &__info {
+  }
+}
+
+.image--info {
+  display: flex;
+  flex-direction: column;
+  padding-left: 4rem;
+
+  &__items {
+    display: flex;
+    justify-content: flex-start;
+    gap: 4rem;
+    color: rgb(146, 143, 143);
+  }
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 0.6rem 1rem;
+  }
+}

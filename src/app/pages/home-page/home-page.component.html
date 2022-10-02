@@ -1,8 +1,59 @@
 <div class="container">
-  <app-image-item></app-image-item>
-  <app-image-item></app-image-item>
-  <app-image-item></app-image-item>
-</div>
+  <header class="header">
+    <div class="header__navigation">
+      <!-- <img src="img/logo.png" alt="" class="logo" /> -->
+      <div class="logo" routerLink="/">
+        <span class="logo__icon"
+          ><mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="home"
+            >linked_camera</mat-icon
+          ></span
+        >
 
-<app-image-page></app-image-page>
-<app-image-details></app-image-details>
+        <h2>ImageHUB</h2>
+      </div>
+
+      <nav class="header__nav">
+        <a href="https://unsplash.com/login" class="header__link">Join</a>
+      </nav>
+    </div>
+    <div class="header__hero">
+      <h1 class="heading-1 header__heading-1">
+        Get your free high quality custom photos,<br />
+        <br />
+        shared by creators
+      </h1>
+      <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="search">
+        <input
+          type="text"
+          name="searchKeyword"
+          ngModel
+          class="search-input"
+          class="search__input"
+          placeholder="search images and videos"
+        />
+
+        <mat-icon
+          class="search__icon"
+          aria-hidden="false"
+          aria-label="License icon"
+          >search</mat-icon
+        >
+      </form>
+
+      <div class="header__trends">
+        <span>Trending:</span>
+        <span> dark,</span>
+        <span> rain,</span>
+        <span> nature,</span>
+        <span> car,</span>
+        <span> durga</span>
+      </div>
+    </div>
+  </header>
+
+  <app-image-list [imageList]="images"></app-image-list>
+  <button (click)="loadMorePages()">Load More</button>
+</div>
