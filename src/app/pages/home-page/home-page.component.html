@@ -1,7 +1,6 @@
 <div class="container">
   <header class="header">
     <div class="header__navigation">
-      <!-- <img src="img/logo.png" alt="" class="logo" /> -->
       <div class="logo" routerLink="/">
         <span class="logo__icon"
           ><mat-icon
@@ -44,16 +43,22 @@
       </form>
 
       <div class="header__trends">
-        <span>Trending:</span>
-        <span> dark,</span>
-        <span> rain,</span>
-        <span> nature,</span>
-        <span> car,</span>
-        <span> durga</span>
+        <span #trending (click)="changeSearchString(trending)">Trending:</span>
+        <span #dark (click)="changeSearchString(dark)"> dark,</span>
+        <span #rain (click)="changeSearchString(rain)"> rain,</span>
+        <span #nature (click)="changeSearchString(nature)"> nature,</span>
+        <span #car (click)="changeSearchString(car)"> car,</span>
+        <span #durga (click)="changeSearchString(durga)"> durga</span>
       </div>
     </div>
   </header>
 
-  <app-image-list [imageList]="images"></app-image-list>
-  <button (click)="loadMorePages()">Load More</button>
+  <app-image-list
+    [searchActive]="searchActive"
+    [searchString]="searchString"
+    [imageList]="images"
+  ></app-image-list>
+  <span *ngIf="loadMore" class="load__more" (click)="loadMorePages()"
+    >Load More</span
+  >
 </div>

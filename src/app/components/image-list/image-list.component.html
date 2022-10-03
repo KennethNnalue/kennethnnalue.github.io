@@ -1,5 +1,10 @@
 <div class="featured">
-  <h3 class="heading-3 featured__heading-3">Featured Photos</h3>
+  <h3 *ngIf="searchActive" class="heading-3 featured__heading-3">
+    {{ searchString | uppercase }} Images
+  </h3>
+  <h3 *ngIf="!searchActive" class="heading-3 featured__heading-3">
+    FEATURED Images
+  </h3>
   <div class="gallery">
     <div
       *ngFor="let image of imageList"

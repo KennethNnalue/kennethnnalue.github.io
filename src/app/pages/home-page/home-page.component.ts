@@ -1,11 +1,15 @@
-import { Urls } from './../../interfaces/internal/photo';
-import { User } from './../../interfaces/internal/photo';
+import { Subscription } from 'rxjs';
+
 import { ImageService } from './../../services/image.service';
 import { ApiService } from './../../services/api.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { APIResponse, Photo } from 'src/app/interfaces/internal/photo';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { Photo } from 'src/app/interfaces/internal/photo';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -13,37 +17,37 @@ import { NgForm } from '@angular/forms';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
 })
-export class HomePageComponent implements OnInit {
-  public searchKeyword: string = '';
+export class HomePageComponent implements OnInit, OnDestroy {
   images: Photo[] = [];
   newImages: Photo[] = [];
-  public imageList: any = [];
   pageNumber: number = 1;
   searchString: string = '';
+  loadMore: boolean = true;
+  searchActive: boolean = false;
+  apiSubscription: Subscription = undefined;
+  @ViewChild('username') input: ElementRef<HTMLInputElement>;
 
   totalNumberOfPages: number | undefined;
   totalItems: number | undefined;
 
   constructor(
     private apiService: ApiService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
     private imageService: ImageService
   ) {}
 
   ngOnInit(): void {
     let randomWord = new Date().toDateString().substring(0, 1);
-    //this.getImages(randomWord + 'a');
+    this.getImages(randomWord);
   }
 
   onSubmit(form: NgForm) {
+    this.searchActive = true;
     this.searchString = String(form.value['searchKeyword']);
-    console.log(form.value);
     this.pageNumber = 1;
     this.getImages(this.searchString);
   }
   private getImages(searchString: string) {
-    this.apiService
+    this.apiSubscription = this.apiService
       .fetchImageList(searchString, this.pageNumber)
       .subscribe((res) => {
         let results = res['results'];
@@ -65,11 +69,23 @@ export class HomePageComponent implements OnInit {
 
     this.pageNumber++;
     if (this.pageNumber > this.totalNumberOfPages) {
-      console.log('totalNumberOfPages', this.totalNumberOfPages);
-      console.log('pageNumber', this.pageNumber);
-
+      this.loadMore = false;
       return;
     }
     this.getImages(this.searchString);
+  }
+  changeSearchString(inputElement: HTMLElement) {
+    this.searchActive = true;
+    this.images = [];
+    let inputValue = inputElement.innerHTML.substring(
+      0,
+      inputElement.innerHTML.length - 1
+    );
+    this.searchString = inputValue;
+    this.getImages(inputValue);
+  }
+
+  ngOnDestroy(): void {
+    this.apiSubscription.unsubscribe();
   }
 }

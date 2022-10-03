@@ -96,6 +96,7 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 5rem;
+  cursor: pointer;
 
   &__icon {
     background-color: $color-grey-light-1;
@@ -135,4 +136,14 @@
       color: $color-grey-dark-1;
     }
   }
+}
+
+.load__more {
+  padding: 2rem;
+  border-radius: 0.4rem;
+  font-size: 2rem;
+  background-color: $color-grey-light-2;
+  margin: 2rem 0;
+  margin-left: 40%;
+  cursor: pointer;
 }
